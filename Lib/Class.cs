@@ -23,7 +23,7 @@ namespace Lib
         /// Метод меняет местами единицы и десятки, откидывая сотни
         /// </summary>
         /// <param name="number"></param>
-        /// <returns></returns>
+        /// <returns>Результат метода переставленное число</returns>
         static public string SwitchNumber(int number)
         {
             string s = String.Empty;
@@ -31,11 +31,7 @@ namespace Lib
             s += number % 10;
             number /= 10;
             s += number % 10;
-           /* for (int i = 0; i < 3; i++)
-            {
-                s += (number % 10).ToString();
-                number/= 10;
-            }*/
+
             return s;
         }
     }

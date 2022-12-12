@@ -12,14 +12,15 @@
             <MenuItem x:Name="function" Header="Функции">
                 <MenuItem x:Name="menuItemSundP" Header="Найти S и P" Click="ButtonSundP_Click"></MenuItem>
                 <MenuItem x:Name="menuItemSwitchNumber" Header="Поменять местами" Click="ButtonSwitchNumber_Click"></MenuItem>
+                <MenuItem x:Name="menuItemClear" Header="Очистить поля" Click="MenuItemClear_Click"></MenuItem>
             </MenuItem>
-            <MenuItem x:Name="info" Header="О программе"/>
-            <MenuItem x:Name="exit" Header="Выход"/>
+            <MenuItem x:Name="info" Click="ButtonInfo_Click" Header="О программе"/>
+            <MenuItem x:Name="exit" Header="Выход" Click="ButtonExit_Click"/>
         </Menu>
         <GroupBox x:Name="groupBox1" Header="Информация и выход" Margin="10,284,0,0" FontSize="14" HorizontalAlignment="Left" Width="254" Height="70" VerticalAlignment="Top">
             <Grid>
                 <Button x:Name="buttonInfo" Content="О программе" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14" Height="30" HorizontalAlignment="Left" Width="120" Click="ButtonInfo_Click" ToolTip="Информация"/>
-                <Button x:Name="button1" Content="Выход" Margin="145,0,0,0" VerticalAlignment="Center" Height="30" FontSize="14" HorizontalAlignment="Left" Width="90" ToolTip="Закрыть программу"/>
+                <Button x:Name="buttonExit" Content="Выход" Margin="145,0,0,0" VerticalAlignment="Center" Height="30" FontSize="14" HorizontalAlignment="Left" Width="90" ToolTip="Закрыть программу" Click="ButtonExit_Click"/>
             </Grid>
         </GroupBox>
         <StatusBar Margin="0,364,0,0" Height="34" VerticalAlignment="Top" HorizontalAlignment="Center" Width="234">
@@ -50,7 +51,7 @@
                     </Border>
                     <Border BorderBrush="Black" BorderThickness="1" Margin="0,19,0,0" HorizontalAlignment="Center" Width="148" Height="75" VerticalAlignment="Top">
                         <Grid Margin="-1,4,1,3">
-                            <TextBox x:Name="textBoxA" HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" FontSize="14" Height="30" VerticalContentAlignment="Center" ToolTip="Введите сторону квадрата" TextChanged="TextBoxA_TextChanged"/>
+                            <TextBox x:Name="textBoxA" HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" FontSize="14" Height="30" VerticalContentAlignment="Center" ToolTip="Введите сторону квадрата" TextChanged="TextBoxA_TextChanged" MaxLength="8"/>
                             <Label Content="Сторона квадрата а:" HorizontalAlignment="Center" Height="30" Width="140" FontSize="14" VerticalAlignment="Top" Margin="0,-3,0,0"/>
                         </Grid>
                     </Border>
@@ -62,7 +63,7 @@
                     <Border BorderBrush="Black" BorderThickness="1" Margin="12,19,12,132" Height="75">
                         <Grid Margin="1,3,1,0">
                             <Label Content="Введите трёхзначное число:" VerticalAlignment="Top" Height="30" FontSize="14" HorizontalAlignment="Center" Width="195"/>
-                            <TextBox x:Name="textBoxNumber" Margin="0,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="188" ToolTip="Введите трёхзначное число" TextChanged="TextBoxNumber_TextChanged"/>
+                            <TextBox x:Name="textBoxNumber" Margin="0,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="188" ToolTip="Введите трёхзначное число" TextChanged="TextBoxNumber_TextChanged" MaxLength="3"/>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Black" BorderThickness="1" Margin="12,134,12,17" Height="74.7">

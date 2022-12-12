@@ -29,6 +29,7 @@ namespace WPF_PR9
 
         DispatcherTimer timer;
 
+        //Событие кнопки "Найти S и P"
         private void ButtonSundP_Click(object sender, RoutedEventArgs e)
         {
 
@@ -43,6 +44,7 @@ namespace WPF_PR9
             }
         }
 
+        //Событие кнопки "Поменять местами"
         private void ButtonSwitchNumber_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(textBoxNumber.Text, out int number) && (number > 99 && number <= 999))
@@ -55,11 +57,13 @@ namespace WPF_PR9
             }
         }
 
+        //Событие кнопки "О программе"
         private void ButtonInfo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Реализовать расчет задачи:\r\n• Дана сторона квадрата a. Найти его площадь и периметр.\r\n• Дано трехзначное число. Вывести вначале его последнюю цифру (единицы), а затем — его среднюю цифру (десятки).");
+            MessageBox.Show("Реализовать расчет задачи:\r\n• Дана сторона квадрата a. Найти его площадь и периметр.\r\n• Дано трехзначное число. Вывести вначале его последнюю цифру (единицы), а затем — его среднюю цифру (десятки).\r\nВыполнил Иванов Михаил ИСП-31");
         }
 
+        //Событие запуска окна
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer = new DispatcherTimer();
@@ -70,6 +74,7 @@ namespace WPF_PR9
             //number.Text = "Задание №1";
         }
 
+        //Событие таймера
         private void Timer_Tick(object sender, EventArgs e)
         {
             DateTime d = DateTime.Now;
@@ -77,6 +82,7 @@ namespace WPF_PR9
             data.Text = d.ToString("dd.MM.yyyy");
         }
 
+        //Событие выполняется каждый раз, когда меняется активная вкладка
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (tabControl.SelectedIndex == 0)
@@ -98,14 +104,29 @@ namespace WPF_PR9
 
         }
 
+        //Очистка результата при вводе новых или изменения старых данных
         private void TextBoxNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
             textBoxResult2.Clear();
         }
 
+        //Очистка результата при вводе новых или изменения старых данных
         private void TextBoxA_TextChanged(object sender, TextChangedEventArgs e)
         {
             textBoxResult.Clear();
+        }
+
+        //Очищает поля
+        private void MenuItemClear_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxA.Clear();
+            textBoxNumber.Clear();
+        }
+
+        //Выход из программы
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
