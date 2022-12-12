@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Lib;
 
 namespace WPF_PR9
@@ -25,6 +26,9 @@ namespace WPF_PR9
         {
             InitializeComponent();
         }
+
+        DispatcherTimer timer;
+
         private void ButtonSundP_Click(object sender, RoutedEventArgs e)
         {
 
@@ -33,16 +37,75 @@ namespace WPF_PR9
                 Class.SundP(a, out int s, out int p);
                 textBoxResult.Text = $"S= {s}, P= {p}";
             }
+            else
+            {
+                MessageBox.Show("Вы не ввели данные или сделали это неправильно.", "Ошибка!");
+            }
         }
 
         private void ButtonSwitchNumber_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(textBoxNumber.Text, out int number))
+            if (int.TryParse(textBoxNumber.Text, out int number) && (number > 99 && number <= 999))
             {
-                //int number2 = number % 10;
-                textBoxResult2.Text = Class.SwitchNumber(number).ToString();
-                //textBoxResult2.Text = Convert.ToString(number%10) + Convert.ToString(number / 10);
+                textBoxResult2.Text = Class.SwitchNumber(number);
             }
+            else
+            {
+                MessageBox.Show("Вы не ввели данные или сделали это неправильно.", "Ошибка!");
+            }
+        }
+
+        private void ButtonInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Реализовать расчет задачи:\r\n• Дана сторона квадрата a. Найти его площадь и периметр.\r\n• Дано трехзначное число. Вывести вначале его последнюю цифру (единицы), а затем — его среднюю цифру (десятки).");
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            timer = new DispatcherTimer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = new TimeSpan(0,0,0,1,0);
+            timer.IsEnabled= true;
+
+            //number.Text = "Задание №1";
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            DateTime d = DateTime.Now;
+            time.Text = d.ToString("HH:mm");
+            data.Text = d.ToString("dd.MM.yyyy");
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (tabControl.SelectedIndex == 0)
+            {
+                number.Text = "Задание №1";
+                textBoxNumber.Clear();
+                textBoxResult2.Clear();
+                menuItemSwitchNumber.IsEnabled= false;
+                menuItemSundP.IsEnabled = true;
+            }
+            else
+            {
+                number.Text = "Задание №2";
+                textBoxA.Clear();
+                textBoxResult.Clear();
+                menuItemSwitchNumber.IsEnabled = true;
+                menuItemSundP.IsEnabled= false;
+            }
+
+        }
+
+        private void TextBoxNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBoxResult2.Clear();
+        }
+
+        private void TextBoxA_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textBoxResult.Clear();
         }
     }
 }
